@@ -14,7 +14,7 @@
 
 ## 数据集
 
-我们开源了一个医疗报告结构化数据评测集，包含以下特点：
+我们开源了一个医疗报告结构化数据评测集，数据地址为：。该数据集包含以下特点：
 - **多样性和代表性**：数据集涵盖了多种类型的医疗报告，如病历、检查报告、诊断报告等；覆盖了各种拍摄情况，如透视，斜视，光线明暗变化等；同时增加了非医疗报告相关图片（如药盒等），判断模型是否有过滤非医疗图片的能力。
 - **高质量标注**：所有数据均经过专业医疗人员标注和审核，确保数据的准确性和可靠性。
 - **数据脱敏**：为了保护患者隐私，数据集中的所有信息均已进行脱敏处理，确保不包含任何可识别个人身份的信息。
@@ -31,6 +31,19 @@
 ```bash
 python evaluate.py
 ```
+
+### 指标
+| 模型       | 训练数据       |性能       |
+|:-----------|:-----------:|:-----------:|
+| Qwen2.5-VL-7B-Instruct   | \    |54.71%    |
+| Qwen2.5-VL-72B-Instruct   | \   | 62.89%|
+| Qwen2.5-VL-7B-Instruct-sft   |  6k  | 55.21%|
+| Qwen2.5-VL-7B-Instruct-rl(SMR-R1)   |  6k  | 70.25%|
+
+
+### 训练曲线
+![Image](./assets/train.png)
+
 
 ### 抽取展示
 ```md
@@ -101,3 +114,19 @@ python evaluate.py
 ## Acknowledgements
 
 We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [QwenVL](https://github.com/QwenLM/Qwen2.5-VL), [vllm](https://github.com/vllm-project/vllm) (our initial codebase).
+
+
+## 📚 Contributors and Citation
+
+Contributors: Lijun Liu, Zhang Tao, Zhang Tao, Mingan Lin, Zenan Zhou, Weipeng Chen. 
+
+If you find this work useful, please cite it as follows:
+```bib
+@misc{lijun2025SMR-R1,
+  author       = {Lijun Liu, Zhang Tao, Zhang Tao, Mingan Lin, Zenan Zhou, Weipeng Chen},
+  title        = {SMR-R1: Reinforcing Ability to Extract Structured Information From Medical Reports in Vision Language Models},
+  howpublished = {\url{https://github.com/yingyukexiansheng/SMR-R1}},
+  note         = {Accessed: 2025-03-26},
+  year         = {2025}
+}
+```
