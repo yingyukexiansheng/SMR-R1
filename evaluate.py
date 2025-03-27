@@ -36,7 +36,7 @@ def api_response(examples):
         input_dict = dict(
             model="",
             stream=True,
-            max_tokens = 16000,
+            max_tokens = 32000,
             messages=messages,
             temperature=0.0,
         )
@@ -100,7 +100,8 @@ def unique_items(items):
     for item in items:
         new_item = {}
         for key, v in item.items():
-            new_item[key] = v.strip()
+            if v.strip() != "":
+                new_item[key] = v.strip()
         if new_item not in res:
             res.append(new_item)
     return res
@@ -111,32 +112,34 @@ def compute_ocr_score(pred_dict, ground_dict):
     pred_true = 0
     ground_count = 0
     
-    for key, value in pred_dict.items():
+    if "指标" in pred_dict:
+        pred_dict["指标"] = unique_items(pred_dict["指标"])
+    
+    for key, value in ground_dict.items():
         if key != "指标":
             value = value.strip()
         if value != "":
             if key != "指标":
-                pred_count += 1
-                if key in ground_dict and re.sub("\s+", "", value, flags=re.DOTALL) == re.sub("\s+", "", ground_dict[key], flags=re.DOTALL):
+                ground_count += 1
+                if key in pred_dict and re.sub("\s+", "", value, flags=re.DOTALL) == re.sub("\s+", "", pred_dict[key], flags=re.DOTALL):
                     pred_true += 1
             else:
-                value = unique_items(value)
                 for item in value:
-                    pred_count += 1
-                    if "指标" in ground_dict:
+                    ground_count += 1
+                    if "指标" in pred_dict:
                         v_max = 0
-                        for t in ground_dict["指标"]:
+                        for t in pred_dict["指标"]:
                             v = compute_ocr_score(item, t)
                             if v_max < v:
                                 v_max = v
                         pred_true += v_max
     
-    for key, item in ground_dict.items():
+    for key, item in pred_dict.items():
         if item != "":
             if key != "指标":
-                ground_count += 1
+                pred_count += 1
             else:
-                ground_count += len(ground_dict["指标"])
+                pred_count += len(pred_dict["指标"])
     if pred_count == 0 and ground_count == 0:
         return 1
     elif pred_count == 0 or ground_count == 0:
