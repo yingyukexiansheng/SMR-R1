@@ -99,6 +99,7 @@ We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [Qwen
 
 ## 📚 Contributors and Citation
 
+
 If you find this work useful, please cite it as follows:
 ```bib
 @misc{lijun2025SMR-R1,
