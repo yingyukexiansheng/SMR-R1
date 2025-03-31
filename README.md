@@ -1,6 +1,6 @@
 # SMR-R1: Reinforcing Ability to Extract Structured Information From Medical Reports in Vision Language Models
 
-[![GitHub](https://img.shields.io/badge/GitHub-开源项目-blue)](https://github.com/your-username/medical-report-structured-extraction)
+[![GitHub](https://img.shields.io/badge/GitHub-开源项目-blue)](https://github.com/yingyukexiansheng/SMR-R1)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ## 🎯Overview
