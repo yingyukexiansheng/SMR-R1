@@ -99,13 +99,10 @@ We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [Qwen
 
 ## 📚 Contributors and Citation
 
-Contributors: Lijun Liu, Zhang Tao, Zhang Tao, Mingan Lin, Zenan Zhou, Weipeng Chen. 
-
 If you find this work useful, please cite it as follows:
 ```bib
 @misc{lijun2025SMR-R1,
-  author       = {Lijun Liu, Tao Zhang, Tao Zhang, Mingan Lin, Zenan Zhou, Weipeng Chen},
->>>>>>> 510367320d0e1a64a6eb21aa50050d7be04c1b79
+  author       = {Lijun Liu, Tao Zhang, Tao Zhang, Chong Li, Mingrui Wang, Chenglin Zhu, Mingan Lin, Zenan Zhou, Weipeng Chen},
   title        = {SMR-R1: Reinforcing Ability to Extract Structured Information From Medical Reports in Vision Language Models},
   howpublished = {\url{https://github.com/yingyukexiansheng/SMR-R1}},
   note         = {Accessed: 2025-03-26},
