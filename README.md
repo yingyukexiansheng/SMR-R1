@@ -3,50 +3,50 @@
 [![GitHub](https://img.shields.io/badge/GitHub-开源项目-blue)](https://github.com/your-username/medical-report-structured-extraction)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
+## 🎯Overview
+
+Given the remarkable performance of the GRPO algorithm on the DeepSeek-R1 model, we have also applied GRPO to the field of medical report structured extraction. We conducted reinforcement training on the Qwen2.5VL-7B model, and the results showed an improvement of 15 percentage points (pp) on the evaluation set compared to the Qwen2.5VL-7B model, 15 pp higher than the SFT training on the same model with the same data, and 7 pp higher than the Qwen2.5VL-72B model. This project aims to provide a solution for the structured extraction of medical reports. We have open-sourced the following content:
+- A desensitized medical report structured data evaluation set [🤗 SMR-R1 Dataset](https://huggingface.co/datasets/mrlijun/SMR-R1)
+- A medical report structured extraction model [🤗 SMR-R1 Model](https://huggingface.co/mrlijun/SMR-R1)
+- Methods for evaluating medical report structured extraction
+
+Through this project, researchers and developers can quickly get started with the task of structured extraction of medical reports and further conduct research and application development using the provided data and models.
 
 
-鉴于grpo算法在deepseek-r1模型上的大放异彩，我们这里也将grpo应用在了医疗报告结构化抽取领域，我们在qwen2.5vl-7b模型上进行了强化训练，结果显示在评测集上比qwen2.5vl-7b模型高15pp，比在相同模型相同数据上sft训练高15pp, 比qwen2.5vl-72b高7pp。本项目旨在提供一套解决方案，用于医疗报告的结构化抽取。我们开源了以下内容：
-- 医疗报告结构化数据评测集（已脱敏）
-- 医疗报告结构化抽取模型
-- 医疗报告结构化评测方法
+## 🍖 Dataset
 
-通过本项目，研究人员和开发者可以快速上手医疗报告的结构化抽取任务，并利用提供的数据和模型进行进一步的研究和应用开发。
+We have open-sourced a structured data evaluation set for medical reports. This dataset features the following characteristics:
 
+- **Diversity and Representativeness**: The dataset encompasses various types of medical reports, such as medical records, examination reports, and diagnostic reports. It covers a range of imaging conditions, including fluoroscopy, oblique views, and variations in lighting intensity. Additionally, it includes non-medical report-related images (e.g., medicine boxes) to assess the model's ability to filter out non-medical images.
 
-## 数据集
+- **High-Quality Annotation**: All data has been annotated and reviewed by professional medical personnel to ensure accuracy and reliability.
 
-我们开源了一个医疗报告结构化数据评测集，数据地址为：。该数据集包含以下特点：
-- **多样性和代表性**：数据集涵盖了多种类型的医疗报告，如病历、检查报告、诊断报告等；覆盖了各种拍摄情况，如透视，斜视，光线明暗变化等；同时增加了非医疗报告相关图片（如药盒等），判断模型是否有过滤非医疗图片的能力。
-- **高质量标注**：所有数据均经过专业医疗人员标注和审核，确保数据的准确性和可靠性。
-- **数据脱敏**：为了保护患者隐私，数据集中的所有信息均已进行脱敏处理，确保不包含任何可识别个人身份的信息。
+- **Data Anonymization**: To protect patient privacy, all information in the dataset has been anonymized to ensure that no personally identifiable information is included.
 
 
-## 模型
+## 🔄 Model
 
-我们开源了一个医疗报告结构化抽取模型，基于qwen2.5-vl-7b,模型地址为：
+We have open-sourced a medical report structured extraction model based on qwen2.5-vl-7b
 
-
-### 评估模型
-修改evaluate.py中的MODEL_PATH， DATA_ROOT， IMAGE_ROOT为自己本机的目录，即可
-运行以下命令评估模型性能：
+### 🧪 Evaluation
+Modify MODEL_PATH, DATA_ROOT, IMAGE_ROOT in evaluate.py to your local directory, and then run the following command to evaluate the model performance:
 ```bash
 python evaluate.py
 ```
 
-### 指标
-| 模型       | 训练数据       |性能       |
+| Model       | dataset       |performance       |
 |:-----------|:-----------:|:-----------:|
 | Qwen2.5-VL-7B-Instruct   | \    |54.71%    |
 | Qwen2.5-VL-72B-Instruct   | \   | 62.89%|
 | Qwen2.5-VL-7B-Instruct-sft   |  6k  | 55.21%|
-| Qwen2.5-VL-7B-Instruct-rl(SMR-R1)   |  6k  | 70.25%|
+| Qwen2.5-VL-7B-Instruct-rl(SMR-R1)   |  6k  | 71.87%|
 
 
-### 训练曲线
+### 📈 Training curve
 ![Image](./assets/train.png)
 
 
-### 抽取展示
+### 😊 Extract display
 ![Image](./assets/OCR-65.png)
 ```md
 <think>
@@ -83,14 +83,12 @@ python evaluate.py
 </answer>
 ```
 
-## todo list
+## 📋️ TODO
 
-- [X] 在基座模型上直接进行强化学习
-- [ ] 在基座模型上sft后再进行强化学习
-- [ ] 对抽取字段不进行限制，自动结构化医疗报告
-- [ ] 因为医疗报告有些数值或者用词识别错，对结果的影响很大，所以不能轻易用编辑距离作为reward，后续会优化reward方式为大模型判定
-- [ ] ...
-
+- [X] Conduct reinforcement learning directly on the base model.
+- [ ] Perform reinforcement learning after SFT (Supervised Fine-Tuning) on the base model.
+- [ ] Do not impose restrictions on the extracted fields, allowing for the automatic structuring of medical reports.
+- [ ] Due to the significant impact on results from incorrect identification of some values or terms in medical reports, it is not advisable to readily use edit distance as the reward. The reward method will be optimized to be determined by a large model in the future.
 
 ## Acknowledgements
 
