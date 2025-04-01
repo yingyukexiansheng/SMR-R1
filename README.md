@@ -39,7 +39,7 @@ python evaluate.py
 | Qwen2.5-VL-7B-Instruct   | \    |54.71%    | \    |
 | Qwen2.5-VL-72B-Instruct   | \   | 62.89%| \    |
 | Qwen2.5-VL-7B-Instruct-sft   |  6k  | 55.21%|  (Supervised Fine-Tuning) training based on Qwen2.5-VL-7B-Instruct.   |
-| Qwen2.5-VL-7B-Instruct-rl(SMR-R1)   |  6k  | 71.87%| (Reinforcement Learning) training based on Qwen2.5-VL-7B-Instruct.    |
+| SMR-R1-7B   |  6k  | 71.87%| (Reinforcement Learning) training based on Qwen2.5-VL-7B-Instruct.    |
 
 
 ### 📈 Training curve
