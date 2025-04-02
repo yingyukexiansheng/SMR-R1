@@ -104,7 +104,6 @@ If you find this work useful, please cite it as follows:
   author       = {Lijun Liu, Tao Zhang, Tao Zhang, Chong Li, Mingrui Wang, Chenglin Zhu, Mingan Lin, Zenan Zhou, Weipeng Chen},
   title        = {SMR-R1: Reinforcing Ability to Extract Structured Information From Medical Reports in Vision Language Models},
   howpublished = {\url{https://github.com/yingyukexiansheng/SMR-R1}},
-  note         = {Accessed: 2025-03-26},
   year         = {2025}
 }
 ```
